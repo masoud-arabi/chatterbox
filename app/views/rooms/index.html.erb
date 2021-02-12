@@ -20,6 +20,12 @@
             <% if @room.present? %>
             <div class="chat-room">
                 <p><%= @room.name %></p>
+                <ul>
+                    <% @room.messages.each do |message| %>
+                    <li><%= message.content %>
+                        <%= message.user.username %></li>
+                    <% end %>
+                </ul>
                 <div class="chat-box">
                     <%= render 'messages/form', message: Message.new, room: @room%>
                 </div>
